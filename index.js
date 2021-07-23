@@ -86,8 +86,8 @@ const zooAnimals = [
   */
 
   function lowPopulationAnimals(zooAnimals){
-   const lowPopulationAnimals = zooAnimals.filter(element => element.population < 5)
-   return lowPopulationAnimals
+   const filtered = zooAnimals.filter(element => element.population < 5)
+   return filtered
   }
   
 
@@ -98,10 +98,10 @@ const zooAnimals = [
   */
 
   function USApop(zooAnimals){
-    const totalPop = zooAnimals.reduce((accum, element) => {
-      return accum + element.population
+    const totalPop = zooAnimals.reduce((accumulator, animals) => {
+      return accumulator += animals.population;
     },0);
-   
+   return totalPop
   }
   
   
@@ -176,7 +176,7 @@ function CuboidMaker(cuboid){
   2 * (length * width + length * height + width * height)  */
 
   CuboidMaker.prototype.surfaceArea = function(){
-  return 2 * (this.ength * this.width + this.length * this.height + this.width * this.height)
+  return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
   }
 
 
@@ -184,6 +184,12 @@ function CuboidMaker(cuboid){
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
+  
+  const cuboid = new CuboidMaker({
+    length: 4,
+    width: 5,
+    height: 5
+  })
 
    
 
@@ -191,15 +197,24 @@ function CuboidMaker(cuboid){
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(cuboid.volume()); // 100
+//  console.log(cuboid.volume()); // 100
 //  console.log(cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
-class CuboidMakerTwo{
+class CuboidMakerTwo extends CuboidMaker{
+  constructor(cubeChild){
+    super(cubeChild)
+  }
+
 
 }
+const cuboidTwo = new CuboidMaker({
+  length: 4,
+  width: 5,
+  height: 5
+})
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄

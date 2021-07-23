@@ -74,12 +74,9 @@ const zooAnimals = [
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(){
-    // const lowerCased = zooAnimals.map (element => { 
-    //  console.log(`${element.animal_name.toLowerCase()}`)
-      
-    // });
-    // console.log(lowerCased)
+  function lowerCaseNames(zooAnimals){
+   const newArray = zooAnimals.map(element => element.animal_name.toLowerCase());
+   return newArray
   } 
   
   
@@ -89,13 +86,8 @@ const zooAnimals = [
   */
 
   function lowPopulationAnimals(zooAnimals){
-   const lowPopulationAnimals = [];
-    zooAnimals.filter(element => {
-      if(element.population < 5){
-        lowPopulationAnimals.push(element)
-      }
-    });
-    return lowPopulationAnimals
+   const lowPopulationAnimals = zooAnimals.filter(element => element.population < 5)
+   return lowPopulationAnimals
   }
   
 
@@ -105,8 +97,10 @@ const zooAnimals = [
   Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
   */
 
-  function USApop(){
-    
+  function USApop(zooAnimals){
+    const totalPop = zooAnimals.reduce((accum, element) => {
+      return accum + element.population
+    },0);
    
   }
   
@@ -128,23 +122,23 @@ const zooAnimals = [
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(){
-
+function add(a,b){
+  return a + b
    
   }
 
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(){
-   
+function multiply(a,b){
+   return a * b
   }
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(/*Your Code Here */){
-   return /*Your Code Here */
+function greeting(a,b){
+   return `Hello ${a} ${b}, nice to meet you!`
   }
   
   
@@ -181,8 +175,8 @@ function CuboidMaker(cuboid){
   Formula for cuboid surface area of a cube: 
   2 * (length * width + length * height + width * height)  */
 
-  CuboidMaker.prototype.surface = function() {
-   return 2 * (this.length * this.width + this.length * this.height + this.width * this.height)
+  CuboidMaker.prototype.surfaceArea = function(){
+  return 2 * (this.ength * this.width + this.length * this.height + this.width * this.height)
   }
 
 
@@ -190,7 +184,7 @@ function CuboidMaker(cuboid){
 /* 🐴🐴🐴 Step 4: Create a new object that uses CuboidMaker 🐴🐴🐴
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
-  const cuboidMaker = Object.create(CuboidMaker);
+
    
 
 
